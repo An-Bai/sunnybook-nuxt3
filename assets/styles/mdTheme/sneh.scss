@@ -1,0 +1,463 @@
+:root {
+  --side-bar-bg-color: var(--base2);
+  --text-color: #44425e;
+  --bg-color: #ebebeb;
+  --green: #00b253;
+  --orange: #f49b00;
+  --red: #ff3399;
+  --yellow: #ffaa00;
+  --magenta: #cc66ff;
+  --violet: #6c71c4;
+  --blue: #01a9e1;
+  --cyan: #00ced1;
+  --base1: #93a1a1;
+  --base2: #f5f5ff;
+  --base3: #ece692;
+  --base4: #bae5f2;
+  --base5: #84d2ea;
+  --bblue: rgba(1, 169, 224, 0.08);
+  --bgreen: rgba(0, 179, 83, 0.08);
+  --bred: rgba(255, 51, 153, 0.03);
+  --base02: #3d3d56;
+  --base03: #2c2c3e;
+  --item-hover-bg-color: var(--base2);
+  --window-border: 1px solid #93a1a1;
+  --active-file-bg-color: var(--red);
+  --active-file-text-color: var(--bg-color);
+  --item-hover-text-color: #93a1a1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+#article {
+  font-size: 18px;
+  font-family: "PT Sans", "-apple-system", "Liberation Mono", monospace;
+  /*font-family: Geneva, Tahoma, sans-serif;*/
+  color: var(--text-color);
+  // line-height: 2;
+  background-color: var(--bg-color);
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  pre {
+    margin: 20px 0;
+    padding: 0 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px var(--base5);
+  }
+
+  > ul:first-child,
+  > ol:first-child {
+    margin-top: 30px;
+  }
+
+  > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+  a:hover {
+    color: var(--cyan);
+  }
+
+  em {
+    color: var(--orange);
+    font-style: italic;
+  }
+
+  strong {
+    color: var(--magenta);
+  }
+
+  .md-toc-inner {
+    color: #93a1a1 !important;
+  }
+
+  mark {
+    background: var(--text-color);
+    border-radius: 5px;
+    color: var(--bg-color);
+    padding: 1px 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  [mdlike="h1"],
+  [mdlike="h2"],
+  [mdlike="h3"] {
+    color: var(--red);
+    font-weight: bold;
+    font-family: "PT Sans", monospace;
+  }
+  [mdlike="h1"] > .md-blockmeta,
+  [mdlike="h2"] > .md-blockmeta,
+  [mdlike="h3"] > .md-blockmeta {
+    color: var(--yellow);
+    color: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+  }
+
+  // h1,
+  // [mdlike="h1"] {
+  //   font-size: 1.8rem;
+  // }
+
+  h1:before {
+    content: "#";
+    color: var(--yellow);
+    padding-right: 0.5ch;
+    margin-left: -1.5ch;
+  }
+
+  // h2,
+  // [mdlike="h2"] {
+  //   font-size: 1.5rem;
+  // }
+
+  h2:before {
+    content: "##";
+    color: var(--yellow);
+    padding-right: 0.5ch;
+    margin-left: -2.5ch;
+  }
+
+  // h3,
+  // [mdlike="h3"] {
+  //   font-size: 1.2rem;
+  // }
+
+  h3:before,
+  h3.md-focus:before {
+    content: "###";
+    color: var(--yellow);
+    padding-right: 0.5ch;
+    margin-left: -3.5ch;
+  }
+  /** override the default style for focused headings */
+  h3.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  p,
+  ul,
+  ol,
+  dl,
+  table {
+    margin: 0.8em 0;
+  }
+
+  li {
+    list-style: outside;
+    line-height: 1.8;
+    &::marker {
+      color: var(--red);
+    }
+  }
+
+  li > ul > li {
+    list-style: circle;
+    &::marker {
+      color: var(--yellow);
+    }
+  }
+
+  li > ul > li > ul > li {
+    list-style: square;
+    &::marker {
+      color: var(--blue);
+    }
+  }
+
+  li > ol,
+  li > ul {
+    margin: 0 0;
+  }
+
+  hr {
+    height: 1px;
+    padding: 0;
+    margin: 24px 0;
+    background-color: var(--base2);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    border-bottom: 1px solid var(--base2);
+  }
+
+  body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body > h3:first-child,
+  body > h4:first-child,
+  body > h5:first-child,
+  body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  a:first-child h1,
+  a:first-child h2,
+  a:first-child h3,
+  a:first-child h4,
+  a:first-child h5,
+  a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  h4 p,
+  h5 p,
+  h6 p {
+    background-color: #000;
+    margin-top: 0;
+  }
+
+  h1 p,
+  h2 p,
+  h3 p {
+    margin-top: 0;
+  }
+
+  li p.first {
+    display: inline-block;
+  }
+
+  ul,
+  ol {
+    padding-left: 30px;
+  }
+
+  ul:first-child,
+  ol:first-child {
+    margin-top: 0;
+  }
+
+  ul:last-child,
+  ol:last-child {
+    margin-bottom: 0;
+  }
+
+  blockquote {
+    position: relative;
+    background-color: var(--base3);
+    border-radius: 5px;
+    padding: 16px;
+    color: var(--base02);
+    margin: 20px 0;
+  }
+
+  h4,
+  h5,
+  h6 {
+    display: none;
+  }
+
+  h4 + blockquote {
+    background-color: var(--bred);
+    color: var(--red);
+    padding-left: 50px;
+    border-radius: 5px;
+  }
+
+  h4 + blockquote::before {
+    content: url("sneh/info-red.png");
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  h5 + blockquote {
+    background-color: var(--bgreen);
+    color: var(--green);
+    padding-left: 50px;
+    border-radius: 5px;
+  }
+
+  h5 + blockquote::before {
+    content: url("sneh/idea-green.png");
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  h6 + blockquote {
+    background-color: var(--bblue);
+    color: var(--blue);
+    padding-left: 50px;
+    border-radius: 5px;
+  }
+
+  h6 + blockquote::before {
+    content: url("sneh/bookmark-blue.png");
+    position: absolute;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  blockquote blockquote {
+    padding-right: 0;
+  }
+
+  table {
+    padding: 0;
+    word-break: initial;
+  }
+
+  table tr {
+    border-top: 1px solid #cccccc;
+    margin: 0;
+    padding: 0;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: var(--base2);
+  }
+
+  table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr th:first-child,
+  table tr td:first-child {
+    margin-top: 0;
+  }
+
+  table tr th:last-child,
+  table tr td:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    color: var(--base03);
+    font-family: "SF Mono", monospace;
+    font-size: 0.9rem;
+  }
+  // .md-fences,
+  code,
+  tt {
+    background-color: var(--base4);
+    color: var(--cyan);
+    font-family: "SF Mono", monospace;
+    border-radius: 5px;
+    padding: 2px 4px;
+  }
+}
+
+/* 这里直接合并 highlight.js 插件的 scss 样式代码 */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+.hljs {
+  color: #383a42;
+  background: #bae5f2;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #a0a1a7;
+  font-style: italic;
+}
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: #a626a4;
+}
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #e45649;
+}
+.hljs-literal {
+  color: #0184bb;
+}
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #50a14f;
+}
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #986801;
+}
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #4078f2;
+}
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: #c18401;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
+}
+.hljs-link {
+  text-decoration: underline;
+}

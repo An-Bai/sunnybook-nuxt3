@@ -1,0 +1,461 @@
+:root {
+  --side-bar-bg-color: var(--base2);
+  --text-color: #b3b3d4;
+  --bg-color: #282c34;
+  --green: #59d065;
+  --orange: #ffb070;
+  --red: #fe3698;
+  --yellow: #ffcc66;
+  --magenta: #ee93fe;
+  --violet: #8590ec;
+  --blue: #00bfff;
+  --cyan: #00ceca;
+  --base0: #3d3d56;
+  --base2: #2c2c3e;
+  --base1: #93a1a1;
+  --base3: #1d1f23;
+  --base4: #121213;
+  --base5: #030304;
+  --bblue: rgba(0, 191, 255, 0.15);
+  --bgreen: rgba(89, 208, 101, 0.15);
+  --bred: rgba(254, 55, 152, 0.15);
+  --base00: #7c79ac;
+  --base01: #586e75;
+  --base02: #cbcbf0;
+  --base03: #f8f8f0;
+  --item-hover-bg-color: var(--base2);
+  --window-border: 1px solid #93a1a1;
+  --active-file-bg-color: var(--red);
+  --active-file-text-color: var(--bg-color);
+  --item-hover-text-color: #93a1a1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+#article {
+  /* font-size: 18px; */
+  font-family: "PT Sans", "-apple-system", "Liberation Mono", monospace;
+  /*font-family: Geneva, Tahoma, sans-serif;*/
+  color: var(--text-color);
+  // line-height: 2;
+  background-color: var(--bg-color);
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  pre {
+    margin: 20px 0;
+    padding: 0 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px var(--base4);
+  }
+
+  > ul:first-child,
+  > ol:first-child {
+    margin-top: 30px;
+  }
+
+  > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--cyan);
+  }
+
+  em {
+    color: var(--orange);
+    font-style: italic;
+  }
+
+  strong {
+    color: var(--magenta);
+  }
+
+  // .md-toc-inner {
+  //   color: #93a1a1 !important;
+  // }
+
+  mark {
+    background: var(--base0);
+    border-radius: 5px;
+    color: var(--cyan);
+    padding: 1px 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  [mdlike="h1"],
+  [mdlike="h2"],
+  [mdlike="h3"] {
+    color: var(--red);
+    font-weight: bold;
+    font-family: "PT Sans", "-apple-system", monospace;
+  }
+
+  [mdlike="h1"] > .md-blockmeta,
+  [mdlike="h2"] > .md-blockmeta,
+  [mdlike="h3"] > .md-blockmeta {
+    color: var(--yellow);
+    color: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+  }
+
+  // h1,
+  // [mdlike="h1"] {
+  //   font-size: 2rem;
+  // }
+
+  h1:before {
+    content: "#";
+    color: var(--yellow);
+    padding-right: 0.5ch;
+    margin-left: -1.5ch;
+  }
+
+  // h2,
+  // [mdlike="h2"] {
+  //   font-size: 1.6rem;
+  // }
+
+  h2:before {
+    content: "##";
+    color: var(--yellow);
+    padding-right: 0.5ch;
+    margin-left: -2.5ch;
+  }
+
+  // h3,
+  // [mdlike="h3"] {
+  //   font-size: 1.1rem;
+  // }
+
+  h3:before,
+  h3.md-focus:before {
+    content: "###";
+    color: var(--yellow);
+    padding-right: 0.5ch;
+    margin-left: -3.5ch;
+  }
+
+  /** override the default style for focused headings */
+  h3.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  p,
+  ul,
+  ol,
+  dl,
+  table {
+    margin: 0.8em 0;
+  }
+
+  li {
+    list-style: outside;
+    &::marker {
+      color: var(--red);
+    }
+  }
+
+  li > ul > li {
+    list-style: circle;
+    &::marker {
+      color: var(--yellow);
+    }
+  }
+
+  li > ul > li > ul > li {
+    list-style: square;
+    &::marker {
+      color: var(--blue);
+    }
+  }
+
+  li > ol,
+  li > ul {
+    margin: 0 0;
+  }
+
+  hr {
+    height: 1px;
+    padding: 0;
+    margin: 24px 0;
+    background-color: var(--base2);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    border-bottom: 1px solid var(--base2);
+  }
+
+  > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  > h3:first-child,
+  > h4:first-child,
+  > h5:first-child,
+  > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  a:first-child h1,
+  a:first-child h2,
+  a:first-child h3,
+  a:first-child h4,
+  a:first-child h5,
+  a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  h1 p,
+  h2 p,
+  h3 p {
+    margin-top: 0;
+  }
+
+  li p.first {
+    display: inline-block;
+  }
+
+  ul,
+  ol {
+    padding-left: 30px;
+  }
+
+  ul:first-child,
+  ol:first-child {
+    margin-top: 0;
+  }
+
+  ul:last-child,
+  ol:last-child {
+    margin-bottom: 0;
+  }
+
+  blockquote {
+    position: relative;
+    background-color: var(--base3);
+    border-radius: 5px;
+    padding: 16px;
+    color: var(--base02);
+    margin: 20px 0;
+  }
+
+  h4,
+  h5,
+  h6 {
+    display: none;
+  }
+
+  h4 + blockquote {
+    background-color: var(--bred);
+    color: var(--red);
+    padding-left: 50px;
+    border-radius: 5px;
+  }
+
+  h4 + blockquote::before {
+    content: url("sneh/info-red.png");
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  h5 + blockquote {
+    background-color: var(--bgreen);
+    color: var(--green);
+    padding-left: 50px;
+    border-radius: 5px;
+  }
+
+  h5 + blockquote::before {
+    content: url("sneh/idea-green.png");
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  h6 + blockquote {
+    background-color: var(--bblue);
+    color: var(--blue);
+    padding-left: 50px;
+    border-radius: 5px;
+  }
+
+  h6 + blockquote::before {
+    content: url("sneh/bookmark-blue.png");
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  blockquote blockquote {
+    padding-right: 0;
+  }
+
+  table {
+    padding: 0;
+    word-break: initial;
+  }
+
+  table tr {
+    border-top: 1px solid #cccccc;
+    margin: 0;
+    padding: 0;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: var(--base2);
+  }
+
+  table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr th:first-child,
+  table tr td:first-child {
+    margin-top: 0;
+  }
+
+  table tr th:last-child,
+  table tr td:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    color: var(--base03);
+    font-family: "SF Mono", monospace;
+    font-size: 0.9rem;
+  }
+
+  // .md-fences,
+  code,
+  tt {
+    background-color: var(--base4);
+    color: var(--cyan);
+    font-family: "SF Mono", monospace;
+    border-radius: 5px;
+    padding: 2px 4px;
+  }
+}
+
+/* 这里直接合并 highlight.js 插件的 scss 样式代码 */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+.hljs {
+  color: #abb2bf;
+  background: #121213;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: #c678dd;
+}
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #e06c75;
+}
+.hljs-literal {
+  color: #56b6c2;
+}
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #98c379;
+}
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #d19a66;
+}
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #61aeee;
+}
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: #e6c07b;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
+}
+.hljs-link {
+  text-decoration: underline;
+}
