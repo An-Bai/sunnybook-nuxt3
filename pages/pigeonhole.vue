@@ -2,73 +2,27 @@
   <div class="pigeonhole-main">
     <div class="pigeonhole-title">时间地平线 の Recording...</div>
     <div class="pigeonhole-box">
-      <div class="pigeonhole-year-box">
-        <div class="vertical-line"></div>
-        <h1 class="year-show">2022</h1>
-        <div class="pigeonhole-month-box">
-          <h2 class="month-show">7/2022 <span>(10)</span></h2>
+      <div class="vertical-line"></div>
+      <div
+        class="pigeonhole-year-box"
+        v-for="item in pigeonholeData"
+        :key="item"
+      >
+        <h1 class="year-show">{{ getYear(item[0][0].CreatedAt) }}</h1>
+        <div class="pigeonhole-month-box" v-for="res in item" :key="res">
+          <h2 class="month-show">
+            {{ getMonth(res[0].CreatedAt) }}月 <span>({{ res.length }})</span>
+          </h2>
           <ul>
-            <li>
-              <p>关于转生成为史莱姆这件事</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>兔子咖啡店</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>魔王爱上勇者</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>天使降临到你身边</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-          </ul>
-        </div>
-        <div class="pigeonhole-month-box">
-          <h2 class="month-show">7/2022 <span>(10)</span></h2>
-          <ul>
-            <li>
-              <p>关于转生成为史莱姆这件事</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>兔子咖啡店</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>魔王爱上勇者</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>天使降临到你身边</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="pigeonhole-year-box">
-        <h1 class="year-show">2022</h1>
-        <div class="pigeonhole-month-box">
-          <h2 class="month-show">7/2022 <span>(10)</span></h2>
-          <ul>
-            <li>
-              <p>关于转生成为史莱姆这件事</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>兔子咖啡店</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>魔王爱上勇者</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
-            </li>
-            <li>
-              <p>天使降临到你身边</p>
-              <span> <i>28</i>/<i>星期一</i><i>晴</i> </span>
+            <li v-for="val in res" :key="val">
+              <p>
+                <NuxtLink :to="'/article/' + val.ID">{{ val.Title }}</NuxtLink>
+              </p>
+              <span>
+                <i class="dayFont">{{ getDay(val.CreatedAt) }}</i
+                >/<i>{{ getWeek(val.CreatedAt) }}</i
+                ><i>{{ val.Weather }}</i>
+              </span>
             </li>
           </ul>
         </div>
@@ -77,23 +31,45 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const counter = useCounter();
+const { articleApi } = useApi();
+const { getYear, getMonth, getDay, getWeek } = timeUtil();
+const pigeonholeData = ref("");
+const giveList = userArticleParentNode();
+giveList.value = [];
+giveList.value.push({ router: "pigeonhole", name: "归档" });
+counter.value = [
+  {
+    type: 2,
+    routerName: "归档",
+  },
+];
+
+initData();
+async function initData() {
+  await articleApi.getArticlePig().then((res) => {
+    pigeonholeData.value = res.data;
+  });
+}
+</script>
 
 <style scoped lang="scss">
 /* 复用代码块 */
 
 .pigeonhole-main {
   padding: 0 30px;
-  min-height: 600px;
+  min-height: 800px;
   box-sizing: border-box;
-  background-color: #fff;
+  // background-color: #fff;
 }
 .pigeonhole-title {
   padding: 20px 0;
-  background-color: pink;
+  // background-color: pink;
   text-align: center;
   font-weight: 700;
   font-size: 2em;
+  box-shadow: 0 5px 5px 0 rgba(138, 70, 205, 0.5);
 }
 
 .pigeonhole-box {
@@ -180,7 +156,9 @@
             padding: 5px;
           }
           > i:first-of-type {
-            font-size: 1.2em;
+            font-size: 1.5em;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+              "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
           }
         }
         &::before {

@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <div class="class-box">
-      <ul>
-        <li>Java基础知识</li>
-        <li>Go语言</li>
-        <li>H5前端知识</li>
-        <li>动漫杂谈</li>
-        <li></li>
-      </ul>
-    </div>
+  <div class="tools-box">
+    <div class="class-box">这是工具页~</div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const counter = useCounter();
+counter.value = [
+  {
+    type: 2,
+    routerName: "工具",
+  },
+];
+</script>
 
 <style scoped lang="scss">
+.tools-box {
+  min-height: 800px;
+}
 .class-box {
   padding: 40px;
 }

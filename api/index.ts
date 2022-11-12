@@ -1,5 +1,12 @@
 import articleApi from "@/api/article";
-// Nuxt3约定，在composables的直接子集目录下的文佳导出的东西可以直接用
+import thirdApi from "@/api/third";
+import classApi from "@/api/class";
+import tagApi from "@/api/tag";
+import blogApi from "@/api/blog";
 export default {
   articleApi,
+  thirdApi,
+  classApi,
+  tagApi,
+  blogApi,
 };

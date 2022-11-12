@@ -66,6 +66,14 @@
 </template>
 
 <script setup lang="ts">
+const counter = useCounter();
+counter.value = [
+  {
+    type: 2,
+    routerName: "留言",
+  },
+];
+
 const test =
   ref(`在Spring Boot应用中，使用Jackson进行JSON序列化的时将Long类型ID转成String响应给前端。前端是什么类型，JSON字符串转js对象，接收Long类型的是number，Number精度是16位（雪花ID是19位的），所以JS的Number数据类型导致的精度丢失后三位。
 

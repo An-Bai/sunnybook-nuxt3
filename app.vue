@@ -1,11 +1,25 @@
 <template>
   <div>
-    <NuxtLayout name="default">
-      <NuxtLoadingIndicator color="skyblue" />
+    <NuxtLoadingIndicator color="skyblue" />
+    <LazyNuxtLayout>
       <!-- here -->
       <NuxtPage />
-    </NuxtLayout>
+    </LazyNuxtLayout>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+// const layout = "default";
+
+// 切换主题关键代码
+const backgroundColorStyle = ref("styles");
+// console.log(backgroundColorStyle);
+useHead({
+  link: [
+    {
+      rel: "stylesheet",
+      // href: `/_nuxt/assets/${backgroundColorStyle.value}/public/lightColor.scss`,
+    },
+  ],
+});
+</script>

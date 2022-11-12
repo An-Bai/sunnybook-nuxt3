@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ArticleNavBar :nameList="[]" self="所有文章"></ArticleNavBar>
+    <ArticleNavBar :nameList="nameList" :self="self.Name"></ArticleNavBar>
     <div class="article-box">
       <ul>
         <li v-for="(item, i) in pageData.PageData" :key="item">
@@ -19,27 +19,43 @@
 </template>
 
 <script setup lang="ts">
-const { articleApi } = useApi();
+const { articleApi, classApi } = useApi();
 const currentPage = ref(1);
 const pageData = ref("");
+const self = ref("");
 const okShow = ref(false);
-// giveList.value.push({ router: "article", name: "所有文章" });
+const route = process.client ? useRoute() : {};
+const nameList = [{ router: "class", name: "分类" }];
+
 // init 操作部分
 initData();
 async function initData() {
-  const counter = useCounter();
-  const giveList = userArticleParentNode();
-  counter.value = [
-    {
-      type: 2,
-      routerName: "所有文章",
-    },
-  ];
-  giveList.value = [];
+  // 获取该分类信息
+  await classApi.getClassMess(route.params.id).then((res) => {
+    self.value = res.data;
+    // 更新头部
+    const counter = useCounter();
+    counter.value = [
+      {
+        type: 2,
+        routerName: self.value.Name,
+        description: self.value.Description,
+      },
+    ];
+    const giveList = userArticleParentNode();
+    giveList.value = [];
+    giveList.value.push({ router: "class", name: "分类" });
+    giveList.value.push({
+      router: "class/" + route.params.id,
+      name: self.value.Name,
+    });
+  });
+
   // 获取分页数据
   await articleApi
     .getBaseArticlesPage({
       currentPage: currentPage.value,
+      classId: route.params.id,
     })
     .then((res) => {
       pageData.value = res.data;
@@ -47,7 +63,7 @@ async function initData() {
     });
 }
 
-watch(currentPage, (val) => {
+watch(currentPage, () => {
   initData();
 });
 </script>

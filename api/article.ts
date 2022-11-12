@@ -1,18 +1,40 @@
 import Http from "@/utils/http";
 
-// 文章路由模块化
 export default new (class article extends Http {
   /**
-   * 获取文章详情（示例1）
+   * 获取精选概要文章
+   */
+  getGreatArticles() {
+    return this.get("/article/great");
+  }
+
+  /**
+   * 获取随机概要文章
+   */
+  getRandomArticles() {
+    return this.get("/article/random");
+  }
+
+  /**
+   * 获取分页文章
+   * @param { params } id 文章筛选条件
+   */
+  getBaseArticlesPage(params?: object) {
+    return this.get("/article/page", params);
+  }
+
+  /**
+   * 获取文章详情
    * @param { Number } id 文章id
    */
-  getDetail(id: number) {
-    return this.get("/app/v1/article/detail/" + id);
+  getArticle(id: string) {
+    return this.get("/article/" + id);
   }
+
   /**
-   * 获取所有文章分类（示例2）
+   * 获取归档文章
    */
-  getAll() {
-    return this.get("/api/v1/articles");
+  getArticlePig() {
+    return this.get("/article/pigeonhole");
   }
 })();

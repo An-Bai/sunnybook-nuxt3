@@ -30,12 +30,12 @@ button {
 }
 
 a {
-    /* color: #666; */
+    color: #060606;
     text-decoration: none
 }
 
 a:hover {
-    color: #c81623;
+    color: #11b1ba;
     cursor: pointer;
 }
 

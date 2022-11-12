@@ -13,8 +13,8 @@
   --base1: #93a1a1;
   --base2: #f5f5ff;
   --base3: #ece692;
-  --base4: #bae5f2;
-  --base5: #84d2ea;
+  --base4: #f9f9f9;
+  --base5: #acacac;
   --bblue: rgba(1, 169, 224, 0.08);
   --bgreen: rgba(0, 179, 83, 0.08);
   --bred: rgba(255, 51, 153, 0.03);
@@ -373,12 +373,16 @@
     margin-bottom: 0;
   }
 
+  pre {
+    overflow: hidden;
+  }
+
   code {
     color: var(--base03);
     font-family: "SF Mono", monospace;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: 700;
   }
-  // .md-fences,
   code,
   tt {
     background-color: var(--base4);
@@ -386,13 +390,19 @@
     font-family: "SF Mono", monospace;
     border-radius: 5px;
     padding: 2px 4px;
+    display: inline-block;
+  }
+  img {
+    width: 80%;
+    margin: 0 10%;
   }
 }
 
 /* 这里直接合并 highlight.js 插件的 scss 样式代码 */
 pre code.hljs {
   display: block;
-  overflow-x: auto;
+  // overflow-x: auto;
+  overflow: hidden;
   padding: 1em;
 }
 code.hljs {
@@ -400,7 +410,7 @@ code.hljs {
 }
 .hljs {
   color: #383a42;
-  background: #bae5f2;
+  background: #f9f9f9;
 }
 .hljs-comment,
 .hljs-quote {
